@@ -105,8 +105,8 @@
                                 </figure>
                                 <?php endif; ?>
                                 <span class="res_title"><b><a onClick="setCurrentItem(<?php echo e($item->id); ?>)" href="javascript:void(0)"><?php echo e($item->name); ?></a></b></span><br />
-                                <span class="res_description"><?php echo e($item->short_description); ?></span><br />
-                                <span class="res_mimimum"><?php echo money($item->price, env('CASHIER_CURRENCY','usd'),env('DO_CONVERTION',true)); ?></span>
+
+
                             </div>
                         </div>
                         <?php endif; ?>
@@ -234,7 +234,7 @@
     function setSelectedVariant(element){
 
         //console.log(formated);
-        $('#modalPrice').html(formatPrice(element.price));
+        // $('#modalPrice').html(formatPrice(element.price));
 
         //Set current item price
         currentItemSelectedPrice=element.price;
@@ -428,7 +428,7 @@
         previouslySelected=[];
         $('#modalTitle').text(item.name);
         $('#modalName').text(item.name);
-        $('#modalPrice').html(item.price);
+        // $('#modalPrice').html(item.price);
         $('#modalID').text(item.id);
 
         if(item.image != "/default/restaurant_large.jpg"){
@@ -454,7 +454,7 @@
             $("#modalDialogItem").addClass("col-sm col-md col-lg");
         }
 
-        $('#modalDescription').html(item.description);
+        // $('#modalDescription').html(item.description);
 
 
         if(item.has_variants){
@@ -510,7 +510,7 @@
             mainPrice+=parseFloat(($(this).val()+""));
             extrasSelected.push($(this).attr('id'));
         });
-        $('#modalPrice').html(formatPrice(mainPrice));
+        // $('#modalPrice').html(formatPrice(mainPrice));
 
     }
     <?php

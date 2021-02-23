@@ -1,7 +1,7 @@
 <div class="col-12 col-md-6 col-lg-4 mb-5">
     <div class="card shadow-soft border-light">
         <div class="card-header p-0">
-        <img src="{{ $image}}" class="card-img-top rounded-top" alt="image">
+        <img src="{{ asset('/') }}/{{ $image}}" class="card-img-top rounded-top" alt="image">
         </div>
         <div class="card-body">
         <i class="fas fa-edit mr-2 text-primary ckedit_btn" type="button" style="display: none"></i> <h3 class="card-title mt-3 ckedit" <?php {echo 'id='.$title['key']; }?> <?php {echo 'key='.$title['key']; }?> >{{ $title['value'] }}</h3>

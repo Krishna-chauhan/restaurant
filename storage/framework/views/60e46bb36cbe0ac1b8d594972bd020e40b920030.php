@@ -94,10 +94,10 @@
                     <div class="card-header bg-white text-center">
                         <img class="rounded" src="<?php echo e($restorant->icon); ?>" width="90px" height="90px"></img>
                         <h4 class="heading mt-4"><?php echo e($restorant->name); ?> &nbsp;<?php if(count($restorant->ratings)): ?><span><i class="fa fa-star" style="color: #dc3545"></i> <strong><?php echo e(number_format($restorant->averageRating, 1, '.', ',')); ?> <span class="small">/ 5 (<?php echo e(count($restorant->ratings)); ?>)</strong></span></span><?php endif; ?></h4>
-                        <p class="description"><?php echo e($restorant->description); ?></p>
-                        <?php if(!empty($openingTime) && !empty($closingTime)): ?>
-                            <p class="description"><?php echo e(__('Open')); ?>: <?php echo e($openingTime); ?> - <?php echo e($closingTime); ?></p>
-                        <?php endif; ?>
+
+
+
+
                     </div>
                     <div class="card-body">
                         <div class="nav-wrapper">

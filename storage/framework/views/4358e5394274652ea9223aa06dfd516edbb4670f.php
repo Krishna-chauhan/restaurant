@@ -85,7 +85,7 @@
                                         <div class="col-lg-3">
                                             <a href="<?php echo e(route('items.edit', $item)); ?>">
                                                 <div class="card">
-                                                    <img class="card-img-top" src="<?php echo e($item->logom); ?>" alt="...">
+                                                    <img class="card-img-top" src="<?php echo e(asset('/')); ?>/<?php echo e($item->logom); ?>" alt="...">
                                                     <div class="card-body">
                                                         <h3 class="card-title text-primary text-uppercase"><?php echo e($item->name); ?></h3>
                                                         <p class="card-text description mt-3"><?php echo e($item->description); ?></p>

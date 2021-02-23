@@ -94,10 +94,10 @@
                     <div class="card-header bg-white text-center">
                         <img class="rounded" src="{{ $restorant->icon }}" width="90px" height="90px"></img>
                         <h4 class="heading mt-4">{{ $restorant->name }} &nbsp;@if(count($restorant->ratings))<span><i class="fa fa-star" style="color: #dc3545"></i> <strong>{{ number_format($restorant->averageRating, 1, '.', ',') }} <span class="small">/ 5 ({{ count($restorant->ratings) }})</strong></span></span>@endif</h4>
-                        <p class="description">{{ $restorant->description }}</p>
-                        @if(!empty($openingTime) && !empty($closingTime))
-                            <p class="description">{{ __('Open') }}: {{ $openingTime }} - {{ $closingTime }}</p>
-                        @endif
+{{--                        <p class="description">{{ $restorant->description }}</p>--}}
+{{--                        @if(!empty($openingTime) && !empty($closingTime))--}}
+{{--                            <p class="description">{{ __('Open') }}: {{ $openingTime }} - {{ $closingTime }}</p>--}}
+{{--                        @endif--}}
                     </div>
                     <div class="card-body">
                         <div class="nav-wrapper">

@@ -485,8 +485,11 @@ class FrontEndController extends Controller
         if($subDomain&&$alias!==$subDomain){
             return redirect()->route('restorant',$subDomain);
         }
-         $restorant = Restorant::where('subdomain',$alias)->first();
+          $restorant = Restorant::where('subdomain',$alias)->first();
 
+        if (!$restorant){
+            $restorant = Restorant::where('subdomain','restaurant')->first();
+        }
         if($restorant->active == 1){
             $restorant->increment('views');
 
