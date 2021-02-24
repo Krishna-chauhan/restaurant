@@ -4,7 +4,7 @@
     <div class="container-fluid">
         @if(!env('HIDE_PROJECT_BRANDING',false))
           <a class="navbar-brand mr-lg-5" href="#">
-            <img src="{{ asset('/') }}/images/parkoye_logo.png">
+            <img src="{{ asset('/') }}/images/p_logo.png">
           </a>
         @else
         <a class="navbar-brand mr-lg-5" href="#">

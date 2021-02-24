@@ -33,19 +33,19 @@ class ItemsController extends Controller
                 if($currentPlan==null){
                     return redirect()->route('plans.current')->withStatus(__('Please subscribe to a plan first'));
                 }
-                $items=Items::whereIn('category_id', auth()->user()->restorant->categories->pluck('id')->toArray()); 
+                $items=Items::whereIn('category_id', auth()->user()->restorant->categories->pluck('id')->toArray());
                 if($currentPlan->limit_items!=0){
                     $canAdd=$currentPlan->limit_items>$items->count();
                 }
             }
             return view('items.index', [
                 'canAdd'=>$canAdd,
-                'categories' => auth()->user()->restorant->categories->reverse(), 
+                'categories' => auth()->user()->restorant->categories->reverse(),
                 'restorant_id' => auth()->user()->restorant->id]);
         }else{
             return redirect()->route('orders.index')->withStatus(__('No Access'));
         }
-            
+
     }
 
     public function indexAdmin(Restorant $restorant)
@@ -85,7 +85,8 @@ class ItemsController extends Controller
                 $this->imagePath,
                 $request->item_image,
                 [
-                    ['name'=>'large','w'=>590,'h'=>400],
+//                   ['name'=>'large','w'=>1000,'h'=>1000],
+                    ['name'=>'large', 'w'=>null , 'h'=>null],
                     //['name'=>'thumbnail','w'=>300,'h'=>300],
                     ['name'=>'medium','w'=>295,'h'=>200],
                     ['name'=>'thumbnail','w'=>200,'h'=>200]
@@ -108,7 +109,7 @@ class ItemsController extends Controller
         //
     }
 
-    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -120,12 +121,12 @@ class ItemsController extends Controller
     {
         //if item belongs to owner restorant menu return view
         if(auth()->user()->hasRole('owner') && $item->category->restorant->id == auth()->user()->restorant->id || auth()->user()->hasRole('admin')){
-        
-            return view('items.edit', 
+
+            return view('items.edit',
             [
-                'item' => $item, 
+                'item' => $item,
                 'setup'=>['items'=>$item->variants()->paginate(100)],
-                'restorant' => $item->category->restorant, 
+                'restorant' => $item->category->restorant,
                 'restorant_id' => $item->category->restorant->id]);
         }else{
             return redirect()->route('items.index')->withStatus(__("No Access"));
@@ -147,12 +148,12 @@ class ItemsController extends Controller
         if(isset($request->vat)){
             $item->vat= $request->vat;
         }
-       
-        
+
+
         $item->available=$request->exists('itemAvailable');
         $item->has_variants=$request->exists('has_variants');
 
-       
+
         if($request->hasFile('item_image')){
 
             if($request->hasFile('item_image')){
@@ -220,9 +221,9 @@ class ItemsController extends Controller
             $extras->name = strip_tags($request->extras_name);
             $extras->price = strip_tags($request->extras_price);
             $extras->item_id = $item->id;
-    
-            
-    
+
+
+
             $extras->save();
         }else{
             //Update
@@ -230,9 +231,9 @@ class ItemsController extends Controller
 
             $extras->name = strip_tags($request->extras_name);
             $extras->price = strip_tags($request->extras_price);
-    
+
             $extras->update();
-        
+
         }
 
 

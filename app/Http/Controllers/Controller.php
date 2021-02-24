@@ -25,15 +25,17 @@ class Controller extends BaseController
 
         //Make the versions
         foreach ($versions as $key => $version) {
-            if(isset($version['w'])&&isset($version['h'])){
+            if(isset($version['w']) && isset($version['h']) && !is_null($version['w'])){
                 $img = Image::make($laravel_image_resource->getRealPath())->fit($version['w'], $version['h']);
                 $img->save(public_path($folder).$uuid."_".$version['name']."."."jpg");
             }else{
+                $img = Image::make($laravel_image_resource->getRealPath());
+                $img->save(public_path($folder).$uuid."_".$version['name']."."."jpg");
                 //Original image
-                $laravel_image_resource->move(public_path($folder), $uuid."_".$version['name']."."."jpg");
+//                $laravel_image_resource->move(public_path($folder), $uuid."_".$version['name']."."."jpg");
             }
-           
-           
+
+
         }
         return $uuid;
     }
@@ -111,7 +113,7 @@ class Controller extends BaseController
                     $rangeFound=false;
                     if(env('ENABLE_COST_PER_DISTANCE', false)){
                         //Range based pricing
-                        
+
                         //Find the range
                         $ranges=[];
 
@@ -142,7 +144,7 @@ class Controller extends BaseController
 
                     if(!$rangeFound){
                         if(env('ENABLE_COST_PER_DISTANCE', false) && env('COST_PER_KILOMETER', 1)){
-                            
+
                             $new_obj->cost_per_km=floor($distance)*floatval(env('COST_PER_KILOMETER'));
                             $new_obj->cost_total=floor($distance)*floatval(env('COST_PER_KILOMETER'));
                         }else{
@@ -151,7 +153,7 @@ class Controller extends BaseController
                             $new_obj->cost_total=config('global.delivery');
                         }
                     }
-                    
+
 
                     $addresses[$address->id] = (object)$new_obj;
                 }
@@ -193,7 +195,7 @@ class Controller extends BaseController
 
     public function scopeIsWithinMaxDistance($query, $latitude, $longitude, $radius = 25,$table="restorants") {
 
-        
+
         $haversine = "(6371 * acos(cos(radians($latitude))
                         * cos(radians(".$table.".lat))
                         * cos(radians(".$table.".lng)

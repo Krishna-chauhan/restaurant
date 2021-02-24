@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <?php if(!env('HIDE_PROJECT_BRANDING',false)): ?>
           <a class="navbar-brand mr-lg-5" href="#">
-            <img src="<?php echo e(asset('/')); ?>/images/parkoye_logo.png">
+            <img src="<?php echo e(asset('/')); ?>/images/p_logo.png">
           </a>
         <?php else: ?>
         <a class="navbar-brand mr-lg-5" href="#">

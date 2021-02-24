@@ -7600,7 +7600,7 @@ button.bg-darker:focus {
 }
 
 .d-none {
-  display: none !important;
+  /*display: none !important;*/
 }
 
 .d-inline {
@@ -7675,7 +7675,7 @@ button.bg-darker:focus {
 
 @media (min-width: 768px) {
   .d-md-none {
-    display: none !important;
+    /*display: none !important;*/
   }
 
   .d-md-inline {
@@ -20884,8 +20884,14 @@ textarea[resize="horizontal"] {
 
 @media (max-width: 991.98px) {
   .section-profile-cover {
+    /*height: 580px;*/
     height: 580px;
   }
+
+    /*.section-profile-cover img {*/
+    /*    height: 260px;*/
+    /*    object-fit: cover;*/
+    /*}*/
 }
 
 .section-components>.form-control+.form-control {
